@@ -7,4 +7,5 @@ return {
   require("core.colorscheme"), -- setup color scheme
   require("plugins.whichkey"),
   require("plugins.hop"),
+  require("plugins.mini"),
 }
