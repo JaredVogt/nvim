@@ -9,6 +9,7 @@ local vks = vim.keymap.set  -- for conciseness
 
 -- General keymaps (my preferences)
 vks("n", "x", '"_x', { desc = "Delete character without copying to register" })
+vks('i', '<BS>', '<C-W>', { noremap = true, desc = "Delete last word in insert mode" })
 vks("n", "U", "<C-r>", { desc = "Redo" })
 vks("n", "dw", "daw", { desc = "Delete word from anywhere in word" })
 vks("n", "yw", "yiw", { desc = "Yank word from anywhere in word" })
@@ -17,9 +18,13 @@ vks("n", "j", "gj", { desc = "Move down display line" })
 vks("n", "k", "gk", { desc = "Move up display line" })
 vks('n', 'cc', 'gcc', { remap = true, desc = "toggle comments (overrides gcc)" }) -- remap so gcc still works
 vks('x', 'cc', 'gc', { remap = true, desc = "toggle comments (overrides gc)" })
+vks('n', '<CR>', function()
+    vim.fn.append(vim.fn.line('.') - 1, '')
+    vim.cmd('normal! k')
+end, { noremap = true, desc = "Add blank line above" })
 
 -- Spelling commands
-vks("n", "<leader>s", ":setlocal spell!<cr>", { desc = "Toggle spell check" })
+vks("n", "<leader>s", ":setbrew install ghosttylocal spell!<cr>", { desc = "Toggle spell check" })
 vks("n", "<leader>sn", "]s", { desc = "Next misspelled word" })
 vks("n", "<leader>sp", "[s", { desc = "Previous misspelled word" })
 vks("n", "<leader>su", "z=", { desc = "Show spelling suggestions" })
@@ -49,5 +54,8 @@ vks('n', '<leader>r', '<Plug>ReplaceWithRegisterOperator', { desc = "Replace wit
 vks('n', '<leader>w', ':w<CR>', { desc = "Save file" })
 vks('n', '<leader>q', ':q<CR>', { desc = "Quit" })
 vks('n', '<leader>wq', ':wq<CR>', { desc = "Save and quit" })
+vks('n', '<leader>qa', ':qa<CR>', { desc = "Close all open tabs" })
 vks("n", "<leader>b", "g;", { desc = "Jump back to last edit" })
 vks('n', '<leader>src', ':so %<CR>', { desc = "Souce current file" })
+vks('n', '<leader>n', 'gsaiw', { remap = true, desc = "Type surround character..." })
+vks('n', '<leader>-', ':Oil<CR>', {desc = "Open oil file explorer" })
