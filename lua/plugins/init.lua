@@ -14,4 +14,5 @@ return {
   require("plugins.statusline"),
   require("plugins.barbar"),
   require("plugins.neoscroll"),
+  require("plugins.notify"),
 }
