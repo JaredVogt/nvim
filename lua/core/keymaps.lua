@@ -9,7 +9,6 @@ local vks = vim.keymap.set  -- for conciseness
 
 -- General keymaps (my preferences)
 vks("n", "x", '"_x', { desc = "Delete character without copying to register" })
-vks('i', '<BS>', '<C-W>', { noremap = true, desc = "Delete last word in insert mode" })
 vks("n", "U", "<C-r>", { desc = "Redo" })
 vks("n", "dw", "daw", { desc = "Delete word from anywhere in word" })
 vks("n", "yw", "yiw", { desc = "Yank word from anywhere in word" })

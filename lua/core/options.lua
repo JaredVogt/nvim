@@ -5,7 +5,9 @@ local vo = vim.opt -- for conciseness
 -----------------------------------------------------------
 vo.swapfile = false
 vo.backup = false
-vo.undodir = os.getenv("HOME") .. "/.vim/undodir"
+local undodir = vim.fn.stdpath("state") .. "/undo"
+vim.fn.mkdir(undodir, "p") -- create the dir if it doesn't exist
+vo.undodir = undodir
 vo.undofile = true
 vo.updatetime = 50
 
@@ -18,7 +20,7 @@ vo.completeopt = {'menuone', 'noselect'} -- Better completion experience
 
 
 -- guivim
-vo.guifont = { "FiraCode Nerd Font Mono", "h15" }
+vo.guifont = "FiraCode Nerd Font Mono:h15"
 
 -- behavior
 vo.timeoutlen = 500
@@ -26,7 +28,6 @@ vo.timeoutlen = 500
 -- history/undo
 vo.history = 4000
 vo.undolevels = 4000
-vo.undofile = true -- maintain undo history between sessions
 
 -- line numbers
 vo.relativenumber = true -- show relative line numbers
